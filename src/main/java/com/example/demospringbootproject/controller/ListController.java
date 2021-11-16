@@ -1,6 +1,7 @@
 package com.example.demospringbootproject.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ public class ListController {
     List<String> stringList= new ArrayList<>();
 
     // CRUD - C - Create/insert/add , R- read , U-Update , D - delete
-//C - Create/insert/add
+//C - Create/insert/add  add?value="Java"
     @RequestMapping("/add")
-    public String addToList(){
+    public String addToList(@RequestParam String value){
 
-        stringList.add("Java");
+        stringList.add(value);
 
         return "Object is successfully added to the list";
     }
