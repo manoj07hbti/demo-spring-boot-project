@@ -2,8 +2,7 @@ package com.example.demospringbootproject.controller;
 
 
 import com.example.demospringbootproject.model.Student;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,31 +12,30 @@ public class StudentController {
 
     List<Student> studentList=new ArrayList<>();
 
-    @RequestMapping("/add_student")
-    public String add(){
-        Student student=new Student("Raj",21,"CS");
+    @RequestMapping(value="/add_student", method= RequestMethod.POST)
+    public String add(@RequestBody Student student){
 
         studentList.add(student);
 
         return "Object added Successfully";
     }
 
-    @RequestMapping("get_students")
+    @RequestMapping(value ="get_students", method = RequestMethod.GET)
     public List<Student> getStudentList(){
 
         return studentList;
     }
 
 
-    @RequestMapping("/update_student")
-    public String update(){
+    @RequestMapping(value ="/update_student", method = RequestMethod.PUT)
+    public String update(@RequestParam String name){
 
-        studentList.get(0).setName("Java");
+        studentList.get(0).setName(name);
 
         return "Record Updated";
     }
 
-    @RequestMapping("/delete_student")
+    @RequestMapping(value = "/delete_student", method = RequestMethod.DELETE)
     public String delete(){
 
         studentList.remove(0);
