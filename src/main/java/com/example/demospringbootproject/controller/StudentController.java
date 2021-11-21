@@ -12,7 +12,9 @@ public class StudentController {
 
     List<Student> studentList=new ArrayList<>();
 
-    @RequestMapping(value="/add_student", method= RequestMethod.POST)
+   // @RequestMapping(value="/add_student", method= RequestMethod.POST)
+   // OR
+    @PostMapping("/add_student")
     public String add(@RequestBody Student student){
 
         studentList.add(student);
@@ -20,14 +22,18 @@ public class StudentController {
         return "Object added Successfully";
     }
 
-    @RequestMapping(value ="get_students", method = RequestMethod.GET)
+ //   @RequestMapping(value ="/get_students", method = RequestMethod.GET)
+    //OR
+    @GetMapping("/get_students")
     public List<Student> getStudentList(){
 
         return studentList;
     }
 
 
-    @RequestMapping(value ="/update_student", method = RequestMethod.PUT)
+  //  @RequestMapping(value ="/update_student", method = RequestMethod.PUT)
+    //OR
+    @PutMapping("/update_student")
     public String update(@RequestParam String name){
 
         studentList.get(0).setName(name);
@@ -35,7 +41,10 @@ public class StudentController {
         return "Record Updated";
     }
 
-    @RequestMapping(value = "/delete_student", method = RequestMethod.DELETE)
+   // @RequestMapping(value = "/delete_student", method = RequestMethod.DELETE)
+    //OR
+    @DeleteMapping("/delete_student")
+
     public String delete(){
 
         studentList.remove(0);
