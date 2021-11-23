@@ -1,10 +1,24 @@
 package com.example.demospringbootproject.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Student {
+
+    @Id
+    @GeneratedValue // Automatically increment current 0,1,2,3,......14,15
+    Long id;// primary key unique value
 
     String name;
     int age;
     String dept;
+
+    // default constructor
+    public Student() {
+
+    }
 
     // parameterized constructor
     public Student(String name, int age, String dept) {
